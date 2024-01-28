@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%load static%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <title>Fomr</title>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">Mua'ad Bin Jabal</a>
+        <ul>
+            <li>
+                <a href="{% url 'Home'%}">Home</a>
+                <a href="{% url 'Form'%}">Register Student</a>
+                <a href="{%url 'students'%}">View Registred Student</a>
+                <a href="{%url 'search'%}">Search Student</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="form">
+            <form method="POST">
+                {% csrf_token %}
+                <h2>Registration Form for Students</h2>
+                <label for="id">ID Number:</label><br>
+                <input type="text" name="Id" placeholder="id" required><br>
+                <label for="name">Name:</label><br>
+                <input type="text" name="Name" placeholder="Name" required>
+                <br>
+                <label for="Date Birth">Date Birth</label><br>
+                <input type="date" name="date_birth" placeholder="Date birth" required>
+                <br>
+                <label for="fcl">Faculty:</label><br>
+                <select name="Faculty" id="fcl" required>
+                    <option value="">Select Faculty</option>
+                    <option value="Computing">Computing</option>
+                    <option value="Medcine">medicine</option>
+                    <option value="Health science">Health science</option>
+                    <option value="Engineering">Engineering</option>
+                    <option value="Account">Account</option>
+                </select>
+                <br>
+                <label for="Number">Phone:</label><br>
+                <input type="text" placeholder="Phone Number" name="Phone"><br>
+                <label for="address"> ADDRESS:</label><br>
+                <input type="text" placeholder="ADDRESS" name="address" required><br>
+                <label>Next of Kin:</label><br>
+                <input type="text" name="Next of kin" placeholder="Enter a person's closest" required>
+                <br>
+                <button type="submit">Submit</button>
+
+            </form>
+        </div>
+    </div>
+    <footer>
+        &copy; Mua'ad Bin Jabal 2021
+    </footer>
+</body>
+</html>

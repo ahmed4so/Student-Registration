@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%load static%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <title>Search</title>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">Mua'ad Bin Jabal</a>
+        <ul>
+            <li>
+                <a href="{% url 'Home'%}">Home</a>
+                <a href="{% url 'Form'%}">Register Student</a>
+                <a href="{%url 'students'%}">View Registred Student</a>
+                <a href="{%url 'search'%}">Search Student</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="search">
+        <form method="POST" >
+            {% csrf_token %}
+            <input type="search" name="std_search" required>
+            <button type="submit">Search</button>
+        </form>
+        <div class="std_student">
+            <table>
+                <tr class="std_data">
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>Date Birth</th>
+                    <th>Faculty</th>
+                    <th>Phone</th>
+                    <th>ADDRESS</th>
+                    <th>Next of Kin</th>
+                </tr>
+            {%for x in std%}
+            <tr>
+                <td>{{x.student_id}}</td>
+            <td>{{x.name}}</td>
+            <td>{{x.Date}}</td>
+            <td>{{x.Faculty}}</td>
+            <td>{{x.Phone}}</td>
+            <td>{{x.ADDRESS}}</td>
+            <td>{{x.nex}}</td>
+                <td><form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="delete" value="{{ x.student_id }}">
+                    <input type="submit" value="Delete">
+                </form></td>
+            </tr>
+                    {% empty %}
+            <tr><td colspan="8">No students found</td></tr>
+
+                {%endfor%}
+
+
+            </table>
+        </div>
+    </div>
+
+
+    <footer>
+        &copy; Mua'ad Bin Jabal 2021
+    </footer>
+</body>
+</html>

@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+{%load static%}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <title>Dashboard</title>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">Mua'ad Bin Jabal</a>
+        <ul>
+            <li>
+                <a href="{% url 'Home'%}">Home</a>
+                <a href="{% url 'Form'%}">Register Student</a>
+                <a href="{%url 'students'%}">View Registred Student</a>
+                <a href="{%url 'search'%}">Search Student</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="content">
+        </div>
+    </div>
+    <footer>
+        &copy; Mua'ad Bin Jabal 2021
+    </footer>
+</body>
+</html>
